@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pokedex</title>
+    <link rel="icon" type="image/png" href="assets/pokeball.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Concert+One&family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h2>Pokemon Search App
+    <img src="assets/bulb-svgrepo-com.svg" id="bulb" alt="light-bulb" width="35px" title="info">
+    </h2>
+    <div class="t-loader" id="t-loader" hidden></div>
+    <div id="container" hidden>
+        <label for="search-input">
+            Search for Pokemon Name or ID:
+        </label>
+        <div id="input-and-btn-cont">
+            <input type="search" id="search-input" value="" required>
+            <button id="search-button" type="button">
+                Search
+            </button>
+        </div>
+        <div id="drop-down-cont" class="dd-hide">
+        </div>
+        <div id="name-and-id-cont">
+            <h3 id="pokemon-name">name</h3>
+            <h3 id="pokemon-id">id</h3>
+        </div>
+        <div id="weight-and-height-cont">
+            <p id="weight">weight</p>
+            <p id="height">height</p>
+        </div>
+        <div id="img-cont">
+            <button id="maximize" class="mm-style" title="maximize"> + </button>
+            <img src="assets/pokeball-removebg-preview.png"  alt="pokeball-image" id="sprite">
+            <button id="manimize" class="mm-style" title="minimize"> - </button>
+            <button id="audio-svg-cont" class="audio-svg-cont evol-hide" title="pokemon cry"><img src="assets/audio-svg.svg" alt="audio-icon"></button>
+        </div>
+        <div id="types">
+        </div>
+        <button id="gif-btn" class="norm-and-anim" hidden>Animation</button>
+        <button id="normal-btn" class="norm-and-anim" hidden>Normal</button>
+        <div id="no-anim" hidden>Animation Not Available.</div>
+        <div id="stats-cont">
+            <div class="stat gt">Base</div>
+            <div class="stat">Stats</div>
+            <div class="stat gt hp-st">HP:</div>
+            <div class="stat" id="hp"></div>
+            <div class="stat gt atk-st">Attack:</div>
+            <div class="stat" id="attack"></div>
+            <div class="stat gt dfn-st">Defense:</div>
+            <div class="stat" id="defense"></div>
+            <div class="stat gt sp-atk-st">Sp. Attack:</div>
+            <div class="stat" id="special-attack"></div>
+            <div class="stat gt sp-dfn-st">Sp. Defense:</div>
+            <div class="stat" id="special-defense"></div>
+            <div class="stat gt spd-st">Speed:</div>
+            <div class="stat" id="speed"></div>
+        </div>
+    </div>
+    <div id="loader">
+    </div>
+    <div id="info">
+        <ul>
+            <li>There is a total of 1302 pokemons.</li>
+            <li>The id ranges from 1-10277.</li>
+            <li>There are some pokemons with both genders
+            like Nidoran.</li>
+            <li style="color: rgb(84, 232, 94);">After a Successful pokemon search Tap on it to see Its Evolution Forms.</li>
+            <li>If You encounter any problem<br>
+            please refresh the page.</li>
+        </ul>
+    </div>
+    <div class="tooltip visible-change" id="tooltip">
+        <span class="tooltiptext">click for info</span>
+    </div>
+    <div id="evolution-cont" class="evol-hide">
+        <div id="exit-btn-cont"><span>Evolution Forms</span><button>&#x274C;</button></div>
+        <div id="evolution-chain-cont">
+            <div class="evol-img-cont"></div>
+            <div class="evol-img-cont"></div>
+        </div>
+    </div>
+    <dialog id="dialog-ele">
+        <div>Do You Wish To See Evolution Forms</div>
+            <div>
+                <button>YES</button><button>NO</button>
+            </div>
+    </dialog>
+    <div id="err" class="evol-hide">
+        <img src="assets/server.png" alt="connectivity error" id="err-img">
+        <p>Error Connecting Please Refresh Or Try Again Later</p>
+    </div>
+    <script src="pokemon-evol.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

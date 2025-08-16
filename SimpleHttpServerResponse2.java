@@ -1,19 +1,24 @@
+// act 2 - server which sends today date as response || limit: blocking requests handles only one client at a time
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Date;
 
-public class SimpleHttpServerResponse {
+public class SimpleHttpServerResponse2 {
     public static void main(String[] args) throws IOException {
         ServerSocket server = new ServerSocket(8080);
         System.out.println("Listening for connection on port 8080");
         while(true){
             try(Socket socket = server.accept()){
                 Date today = new Date();
-                System.out.println(today);
-                String httpResponse = "HTTP/1.1 200 OK\r\n\r\n" + today;
+                // System.out.println(today);
+                // String httpResponse = "HTTP/1.1 200 OK\r\n\r\n" + today;
+                // with CUSTOM HTML response
+                String html = "<html><body><h1>Hello from my java HTTP Server!</h1>"+"<p>Current time: " +today+ "</p></body></html>";
+                String httpResponse = "HTTP/1.1 200 OK\r\n"+
+                "Content-Type: text/html\r\n"+
+                "Content-Length: "+html.length()+"\r\n"+"\r\n"+html;
                 socket.getOutputStream().write(httpResponse.getBytes("UTF-8"));
-                System.out.println(httpResponse.getBytes("UTF-8"));
             }
         }
     }
